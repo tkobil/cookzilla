@@ -1,0 +1,25 @@
+<html>
+<style>
+table, th, td {
+    border:1px solid black;
+}
+</style>
+<head>
+</head>
+<body>
+
+Here are recipes by tag: {{tag}}, num_stars: {{num_stars}}:
+
+<table>
+    <th>RecipeId</th>
+{% for recipe in recipes %}
+    <tr>
+        <td>{{recipe.recipeID}}</td>
+    </tr>
+{% endfor %}
+</table>
+
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<html>
+<head>
+</head>
+<body>
+
+
+Post a Recipe!
+<br>
+
+<form id="new_recipe" action="/recipes/new" method="post">
+<label for="title">Title:</label><br>
+<input type="text" id="title" name="title"><br>
+<label for="username">Username:</label><br>
+<input type="text" id="username" name="username"><br>
+<label for="numServings">Number of Servings</label><br>
+<input type="text" id="numServings" name="numServings"><br>
+<label for="tags">Tags (Comma-Separated):</label><br>
+<input type="text" id="tags" name="tags"><br>
+<input type="submit" value="Submit">
+</form>
+
+
+Post a Recipe Ingredient!
+<br>
+
+<form id="new_recipe_ingredient" action="/recipes/ingredient/new" method="post">
+<label for="recipeID">Recipe ID:</label><br>
+<input type="text" id="recipeID" name="recipeID"><br>
+<label for="amount">Amount:</label><br>
+<input type="text" id="amount" name="amount"><br>
+
+<label for="unitName">Unit of Measure:</label><br>
+<input list="units_list" type="text" id="unitName" name="unitName">
+<datalist id="units_list">
+    {% for unit in units %}
+    <option value={{unit}}>
+    {% endfor %}
+</datalist><br>
+
+
+<label for="iName">Ingredient Name:</label><br>
+<input list="ingredients_list" type="text" id="iName" name="iName">
+<datalist id="ingredients_list">
+    {% for ingredient in ingredients %}
+    <option value={{ingredient}}>
+    {% endfor %}
+</datalist><br>
+
+
+<input type="submit" value="Submit">
+</form>
+
+
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

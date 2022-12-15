@@ -1,0 +1,31 @@
+<html>
+<style>
+table, th, td {
+    border:1px solid black;
+}
+</style>
+<head>
+</head>
+<body>
+
+Here are your recently viewed recipes!:
+
+<table>
+    <th>RecipeId</th>
+    <th>Title</th>
+    <th>Number of Servings</th>
+    <th>Posted By</th>
+{% for recipe in recipes %}
+    <tr>
+        <td>{{recipe.recipeID}}</td>
+        <td>{{recipe.title}}</td>
+        <td>{{recipe.numServings}}</td>
+        <td>{{recipe.postedBy}}</td>
+    </tr>
+{% endfor %}
+</table>
+
+
+</body>
+
+</html>

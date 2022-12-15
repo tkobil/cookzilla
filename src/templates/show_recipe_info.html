@@ -1,0 +1,66 @@
+<html>
+<style>
+    table, th, td {
+        border:1px solid black;
+    }
+    </style>
+<head>
+</head>
+<body>
+
+Here is the recipe info for recipeId {{recipes[0].recipeID}}
+
+<table>
+    <th>RecipeId</th>
+    <th>Title</th>
+    <th>Number of Servings</th>
+    <th>Posted By</th>
+    <tr>
+        <td>{{recipes[0].recipeID}}</td>
+        <td>{{recipes[0].title}}</td>
+        <td>{{recipes[0].numServings}}</td>
+        <td>{{recipes[0].postedBy}}</td>
+    </tr>
+
+</table>
+
+<table>
+    <th>Step Number</th>
+    <th>Step Description</th>
+
+{% for step in recipes %}
+    <tr>
+        <td>{{step.stepNo}}</td>
+        <td>{{step.sDesc}}</td>
+    </tr>
+{% endfor %}
+
+</table>
+
+<table>
+    <th>Recipe ID</th>
+    <th>Ingredient Name</th>
+    <th>Unit of Measure</th>
+    <th>Amount</th>
+
+{% for ingredient in recipes %}
+    {% if ingredient.iName %}
+    <tr>
+        <td>{{ingredient.recipeID}}</td>
+        <td>{{ingredient.iName}}</td>
+        <td>{{ingredient.unitName}}</td>
+        <td>{{ingredient.amount}}</td>
+    </tr>
+    {% endif %}
+{% endfor %}
+
+</table>
+
+{% if recipes[0].pictureURL %}
+<img src={{recipes[0].pictureURL}} alt="Image of Recipe" style="width:500px;height:600px;">
+{% endif %}
+
+
+</body>
+
+</html>

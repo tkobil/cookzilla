@@ -1,0 +1,34 @@
+<html>
+<head>
+</head>
+<body>
+
+
+Post a Recipe Step!
+<br>
+
+<form id="new_recipe_step" action="/recipes/new/step" method="post">
+    <label for="recipeID">RecipeId:</label><br>
+    <input list="recipe_id_list" type="text" id="recipe_id" name="recipe_id">
+    <datalist id="recipe_id_list">
+        {% for recipe_id in recipe_ids %}
+        <option value={{recipe_id}}>
+        {% endfor %}
+    </datalist><br>
+
+    <label for="step_number">Step Number:</label><br>
+    <input type="text" id="step_number" name="step_number"><br>
+
+    <label for="step_desc">Step Descriptions</label><br>
+    <input type="text" id="step_desc" name="step_desc"><br>
+<input type="submit" value="Submit">
+</form>
+
+
+
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

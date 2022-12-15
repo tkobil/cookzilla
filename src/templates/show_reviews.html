@@ -1,0 +1,32 @@
+<html>
+<style>
+table, th, td {
+    border:1px solid black;
+}
+</style>
+<head>
+</head>
+<body>
+
+Here are Recipe Reviews for recipe_id {{recipe_id}}:
+
+<table>
+    <th>RecipeId</th>
+    <th>User Name</th>
+    <th>Review Title</th>
+    <th>Review Description</th>
+    <th>Number of Stars</th>
+{% for review in reviews %}
+    <tr>
+        <td>{{review.recipeID}}</td>
+        <td>{{review.userName}}</td>
+        <td>{{review.revTitle}}</td>
+        <td>{{review.revDesc}}</td>
+        <td>{{review.stars}}</td>
+    </tr>
+{% endfor %}
+</table>
+
+</body>
+
+</html>

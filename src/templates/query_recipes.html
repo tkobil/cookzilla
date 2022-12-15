@@ -1,0 +1,39 @@
+<html>
+<head>
+</head>
+<body>
+
+
+Whose recipes would you like to see?<br>
+
+Query Recipes by Tag And/Or Rating:<br>
+<form action="/recipes/search" method="GET">
+<label for="tag">Tag Name:</label><br>
+<input type="text" id="tag" name="tag"><br>
+<label for="num_stars">Number of Stars (1-5):</label><br>
+<input type="text" id="num_stars" name="num_stars"><br>
+<input type="submit" value="Submit">
+</form>
+
+Query Recipe Info by RecipeId:<br>
+<form action="/recipes/search_by_recipeid" method="GET">
+    <label for="recipe_id">Recipe ID:</label><br>
+    <input type="text" id="recipe_id" name="recipe_id"><br>
+    <input type="submit" value="Submit">
+</form>
+
+
+Query Recipe Reviews by RecipeId:<br>
+<form action="/recipes/search/reviews" method="GET">
+    <label for="recipe_id">Recipe ID:</label><br>
+    <input type="text" id="recipe_id" name="recipe_id"><br>
+    <input type="submit" value="Submit">
+</form>
+
+
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>
