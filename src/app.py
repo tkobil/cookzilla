@@ -122,20 +122,29 @@ def get_recipes():
     if tag and num_stars:
         query = f"""
             SELECT DISTINCT(recipeID)
-            FROM Recipe NATURAL JOIN RecipeTag NATURAL JOIN Review
+            FROM Recipe LEFT JOIN RecipeTag
+            USING(recipeID)
+            LEFT JOIN Review
+            USING(recipeID)
             WHERE tagText = '{tag}'
             AND stars = '{num_stars}'
             """
     elif num_stars and not tag:
         query = f"""
             SELECT DISTINCT(recipeID)
-            FROM Recipe NATURAL JOIN RecipeTag NATURAL JOIN Review
+            FROM Recipe LEFT JOIN RecipeTag
+            USING(recipeID)
+            LEFT JOIN Review
+            USING(recipeID)
             WHERE stars = '{num_stars}'
             """
     elif tag and not num_stars:
         query = f"""
             SELECT DISTINCT(recipeID)
-            FROM Recipe NATURAL JOIN RecipeTag NATURAL JOIN Review
+            FROM Recipe LEFT JOIN RecipeTag
+            USING(recipeID)
+            LEFT JOIN Review
+            USING(recipeID)
             WHERE tagText = '{tag}'
             """
     else:
@@ -334,23 +343,30 @@ def get_recipe_info():
         return redirect(url_for('login'))
     
     recipe_id = request.args['recipe_id']
-    query =f"""
+    recipe_steps_query =f"""
             SELECT *
             FROM Recipe LEFT JOIN STEP
             USING (recipeID)
             LEFT JOIN RecipePicture
             USING (recipeID)
-            LEFT JOIN RecipeIngredient
+            WHERE Recipe.recipeID={recipe_id}
+        """
+    recipe_steps_data = Database.query(recipe_steps_query)
+    recipe_ingredients_query =f"""
+            SELECT *
+            FROM Recipe LEFT JOIN RecipeIngredient
             USING (recipeID)
             WHERE Recipe.recipeID={recipe_id}
         """
-    data = Database.query(query)
-    if len(data) < 1:
+    recipe_ingredients_data = Database.query(recipe_ingredients_query)
+    
+    
+    if len(recipe_steps_data) < 1:
         return "No data found for this recipe!"
     
     add_recipe_id_to_session(recipe_id)
     
-    return render_template("show_recipe_info.html", recipes=data)
+    return render_template("show_recipe_info.html", recipe_steps=recipe_steps_data, recipe_ingredients=recipe_ingredients_data)
 
 @app.get("/recipes/recent")
 def get_recently_viewed_recipes():

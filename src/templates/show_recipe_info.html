@@ -8,7 +8,7 @@
 </head>
 <body>
 
-Here is the recipe info for recipeId {{recipes[0].recipeID}}
+Here is the recipe info for recipeId {{recipe_steps[0].recipeID}}
 
 <table>
     <th>RecipeId</th>
@@ -16,10 +16,10 @@ Here is the recipe info for recipeId {{recipes[0].recipeID}}
     <th>Number of Servings</th>
     <th>Posted By</th>
     <tr>
-        <td>{{recipes[0].recipeID}}</td>
-        <td>{{recipes[0].title}}</td>
-        <td>{{recipes[0].numServings}}</td>
-        <td>{{recipes[0].postedBy}}</td>
+        <td>{{recipe_steps[0].recipeID}}</td>
+        <td>{{recipe_steps[0].title}}</td>
+        <td>{{recipe_steps[0].numServings}}</td>
+        <td>{{recipe_steps[0].postedBy}}</td>
     </tr>
 
 </table>
@@ -28,7 +28,7 @@ Here is the recipe info for recipeId {{recipes[0].recipeID}}
     <th>Step Number</th>
     <th>Step Description</th>
 
-{% for step in recipes %}
+{% for step in recipe_steps %}
     <tr>
         <td>{{step.stepNo}}</td>
         <td>{{step.sDesc}}</td>
@@ -43,7 +43,7 @@ Here is the recipe info for recipeId {{recipes[0].recipeID}}
     <th>Unit of Measure</th>
     <th>Amount</th>
 
-{% for ingredient in recipes %}
+{% for ingredient in recipe_ingredients %}
     {% if ingredient.iName %}
     <tr>
         <td>{{ingredient.recipeID}}</td>
@@ -56,8 +56,8 @@ Here is the recipe info for recipeId {{recipes[0].recipeID}}
 
 </table>
 
-{% if recipes[0].pictureURL %}
-<img src={{recipes[0].pictureURL}} alt="Image of Recipe" style="width:500px;height:600px;">
+{% if recipe_steps[0].pictureURL %}
+<img src={{recipe_steps[0].pictureURL}} alt="Image of Recipe" style="width:500px;height:600px;">
 {% endif %}
 
 
